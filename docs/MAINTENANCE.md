@@ -34,11 +34,11 @@ Do these once, then review every 6 months.
 - [ ] Turn on two-factor authentication, preferably with a passkey or hardware key.
 - [ ] Don't create API tokens unless you need one. Delete any you aren't using.
 
-**Domain registrar**
-- [ ] Turn on two-factor authentication.
-- [ ] Turn on **registrar lock** (also called transfer lock or clientTransferProhibited).
-- [ ] Turn on auto-renew, and make sure the card on file is current.
-- [ ] Keep WHOIS privacy on so your home address isn't public.
+**Domain registrar (Namecheap)**
+- [ ] Turn on two-factor authentication: **Profile > Security > 2-Factor Authentication**. Pick an authenticator app or a hardware key, not SMS.
+- [ ] Turn on **Domain Lock** (the registrar lock): **Domain List > Manage > Domain** tab.
+- [ ] Turn on **Auto-Renew** on the same tab, and make sure the card on file is current.
+- [ ] Keep **Domain Privacy** (WHOIS privacy) on, so your home address isn't public. It's free at Namecheap.
 
 **Email (Microsoft 365)**
 - [ ] Check SPF, DKIM, and DMARC. Run these in Terminal:

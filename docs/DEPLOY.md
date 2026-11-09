@@ -61,13 +61,19 @@ Your Microsoft 365 email uses this domain, so **email records must come across e
    dig +short _dmarc.ricardogowdie.com TXT
    ```
    Save the output in a note. Send it to Claude if you'd like a check.
+   - If the `NS` lines end in your web host's name (hosting.com), your DNS records live in its cPanel under **Zone Editor**. Take a screenshot of that page too, because it's the most complete list.
 2. In Cloudflare, click **Add a domain**, enter `ricardogowdie.com`, and pick the **Free** plan. Cloudflare scans your existing records.
 3. **Compare Cloudflare's list with your note from step 1.** The MX, SPF (TXT starting `v=spf1`), DKIM (`selector1`/`selector2`), DMARC, and `autodiscover` records must all be there. Add any that are missing. Set mail-related records to **DNS only** (grey cloud).
-4. At your domain registrar, replace the nameservers with the two Cloudflare gives you. Cloudflare emails you when the domain is active (usually within an hour, sometimes up to 24).
+4. Switch nameservers at **Namecheap**:
+   1. Sign in at https://www.namecheap.com and open **Domain List**, then click **Manage** next to `ricardogowdie.com`.
+   2. If **DNSSEC** is turned on (in the **Advanced DNS** tab), turn it off first. Old DNSSEC settings would make the domain fail to load after the switch. You'll turn DNSSEC back on in Cloudflare in step 9.
+   3. On the **Domain** tab, find **Nameservers**, choose **Custom DNS**, and enter the two nameservers Cloudflare gave you. Click the green check mark to save.
+   4. Cloudflare emails you when the domain is active (usually within an hour, sometimes up to 24).
 5. In your Pages project, go to **Custom domains** and add `ricardogowdie.com`, then `www.ricardogowdie.com`. Cloudflare creates the records and the HTTPS certificate.
 6. Redirect `www` to the main address: **Rules > Redirect Rules > Create rule**, "Redirect from WWW to root" template.
 7. Under **SSL/TLS**, set mode to **Full (strict)**, and under **SSL/TLS > Edge Certificates** turn on **Always Use HTTPS**.
 8. Send yourself an email to `hello@ricardogowdie.com` and reply from it to confirm email still works both ways.
+9. Turn DNSSEC back on through Cloudflare: **DNS > Settings > Enable DNSSEC**. Cloudflare shows a DS record. In Namecheap, go to **Advanced DNS > DNSSEC**, add that record, and save.
 
 ## Part 6. Final checks after go-live
 
@@ -76,4 +82,5 @@ Your Microsoft 365 email uses this domain, so **email records must come across e
 3. https://pagespeed.web.dev scores 95+ on mobile.
 4. Share the link in a LinkedIn draft (don't post) to check the preview image appears.
 5. In **Google Search Console** (https://search.google.com/search-console), add the domain and submit `https://ricardogowdie.com/sitemap-index.xml`.
-6. Remove the old resume PDF from the old host, because it has your phone number and address. If the old host stays live anywhere, take it down.
+6. Remove the old resume PDF from hosting.com today, even before the move, because it has your phone number and address: in cPanel, open **File Manager > public_html** and delete `Ricardo_J_Gowdie_Resume.pdf`.
+7. Keep the hosting.com plan for **2 weeks** after go-live in case you need to roll back. Then download a backup from cPanel and cancel the plan. Before you cancel, confirm nothing else (such as email) runs through it.
