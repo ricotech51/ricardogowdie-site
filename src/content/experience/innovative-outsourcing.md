@@ -7,7 +7,7 @@ endDate: 2017-11-30
 logo: ../../assets/logos/innovative.svg
 skills: []
 draft: false
-order: 3
+order: 5
 ---
 
 - [PLACEHOLDER] One or two outcomes from this role.

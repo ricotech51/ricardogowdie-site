@@ -11,7 +11,7 @@ skills:
   - Hyper-V
   - Microsoft 365
 draft: false
-order: 1
+order: 3
 ---
 
 - Designed a 14-VLAN segmentation architecture with Fortinet firewall controls. Identified vulnerability exposure dropped by approximately 60%.
