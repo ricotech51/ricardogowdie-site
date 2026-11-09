@@ -15,4 +15,4 @@ draft: false
 order: 4
 ---
 
-- Supported a global network of more than 2,000 devices.
+- Supported more than 2,000 devices at my site, within a global company of more than 60,000 employees.
