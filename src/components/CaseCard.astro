@@ -1,0 +1,30 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { hasDetailPage } from '../lib/content';
+
+interface Props {
+  entry: CollectionEntry<'projects'>;
+  showTech?: boolean;
+  headingLevel?: 'h2' | 'h3';
+}
+const { entry, showTech = false, headingLevel = 'h3' } = Astro.props;
+const { data } = entry;
+const href = hasDetailPage(entry) ? `/case-studies/${entry.id}/` : undefined;
+const Heading = headingLevel;
+---
+
+<article class="group flex h-full flex-col rounded-xl border border-line bg-surface p-6 transition-colors hover:border-plum/40 md:p-7">
+  <span class="tag self-start">{data.tag}</span>
+  <Heading class="mt-4 text-xl font-semibold leading-snug">
+    {href ? <a href={href} class="hover:text-brand hover:underline hover:decoration-plum underline-offset-4">{data.title}</a> : data.title}
+  </Heading>
+  <p class="mt-3 leading-relaxed text-muted">{data.action}</p>
+  <p class="mt-auto pt-6 font-display text-lg font-semibold leading-snug text-brand">{data.result}</p>
+  {
+    showTech && data.tech.length > 0 && (
+      <ul class="mt-5 flex flex-wrap gap-x-4 gap-y-1 border-t border-line pt-4 font-mono text-xs text-muted" aria-label="Technologies">
+        {data.tech.map((t) => <li>{t}</li>)}
+      </ul>
+    )
+  }
+</article>

@@ -1,0 +1,26 @@
+---
+import Base from '../../layouts/Base.astro';
+import Section from '../../components/Section.astro';
+import CaseCard from '../../components/CaseCard.astro';
+import ExternalLink from '../../components/ExternalLink.astro';
+import { getProjects, getSite } from '../../lib/content';
+
+const site = await getSite();
+const projects = await getProjects();
+---
+
+<Base title="Case Studies" description="Network security and infrastructure projects, what I did, and what changed.">
+  <Section number="01" label="Case Studies" first headingId="cs-title">
+    <h1 id="cs-title" class="max-w-[20ch] text-4xl font-semibold leading-[1.1] sm:text-5xl">What I did, and <span class="emph">what changed</span>.</h1>
+    <ul class="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      {projects.map((p) => <li><CaseCard entry={p} showTech headingLevel="h2" /></li>)}
+    </ul>
+  </Section>
+  <Section number="02" label="Let's talk" tone="surface" last headingId="cs-cta">
+    <h2 id="cs-cta" class="max-w-[22ch] text-3xl font-semibold leading-tight sm:text-4xl">{site.closing.headline}</h2>
+    <div class="mt-8 flex flex-wrap items-center gap-x-6 gap-y-4">
+      <ExternalLink href={site.bookingUrl} class="btn-primary">{site.closing.primaryButton}</ExternalLink>
+      <a href={`mailto:${site.email}`} class="link font-medium">{site.closing.secondaryLink}</a>
+    </div>
+  </Section>
+</Base>

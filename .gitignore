@@ -1,0 +1,23 @@
+# Build output
+dist/
+.astro/
+
+# Dependencies
+node_modules/
+
+# Logs
+npm-debug.log*
+
+# Secrets and local settings: never commit these
+.env
+.env.*
+!.env.example
+
+# Editor and OS files
+.DS_Store
+.vscode/*
+!.vscode/extensions.json
+.idea/
+
+# Private files: keep the full resume (with phone and address) out of the repo
+*private*

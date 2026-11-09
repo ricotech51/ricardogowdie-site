@@ -1,0 +1,43 @@
+---
+import ExternalLink from './ExternalLink.astro';
+import { getSite, isBlogVisible } from '../lib/content';
+
+const site = await getSite();
+const blog = await isBlogVisible();
+const path = Astro.url.pathname;
+
+const links = [
+  { href: '/', label: 'Hire Me' },
+  { href: '/about/', label: 'About' },
+  { href: '/case-studies/', label: 'Case Studies' },
+  ...(blog ? [{ href: '/blog/', label: 'Blog' }] : []),
+];
+const isCurrent = (href: string) => (href === '/' ? path === '/' : path.startsWith(href));
+---
+
+<header class="border-b border-line bg-bg">
+  <div class="mx-auto flex max-w-6xl flex-wrap items-center gap-x-8 gap-y-3 px-4 py-4 sm:px-6">
+    <a href="/" class="font-display text-lg font-semibold tracking-tight text-brand">{site.name}</a>
+    <nav aria-label="Main" class="order-3 w-full md:order-none md:w-auto">
+      <ul class="flex flex-wrap gap-x-6 gap-y-2 text-[0.95rem]">
+        {
+          links.map((l) => (
+            <li>
+              <a
+                href={l.href}
+                aria-current={isCurrent(l.href) ? 'page' : undefined}
+                class:list={[
+                  'underline-offset-[0.35em] decoration-1 transition-colors hover:text-brand hover:underline hover:decoration-plum',
+                  isCurrent(l.href) ? 'text-brand underline decoration-plum' : 'text-ink',
+                ]}
+              >
+                {l.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+    <ExternalLink href={site.bookingUrl} class="btn-primary ml-auto !px-4 !py-2 text-sm">Book a Call</ExternalLink>
+  </div>
+</header>

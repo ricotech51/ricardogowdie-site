@@ -1,0 +1,36 @@
+# Runs on every push and pull request: checks content, builds the site,
+# and fails if a dependency has a known high-severity vulnerability.
+name: Build check
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+# Read-only: this workflow can't change your repository.
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v5
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - run: npm ci
+      - run: npm audit --omit=dev --audit-level=high
+      - run: npm run build
+      - name: Block personal data and placeholders from going live
+        run: |
+          if grep -rniE "parkton|257-6780|gmail\.com" dist; then
+            echo "Personal data found in the build. Remove it before publishing."; exit 1
+          fi
+          if grep -rl "\[PLACEHOLDER\]" dist; then
+            echo "A page still shows [PLACEHOLDER] text. Fill it in or set draft: true."; exit 1
+          fi

@@ -1,0 +1,41 @@
+---
+// A page for each case study whose details are written. Cases that still
+// contain [PLACEHOLDER] are skipped, so no unfinished page goes live.
+import { render } from 'astro:content';
+import { Image } from 'astro:assets';
+import Base from '../../layouts/Base.astro';
+import Section from '../../components/Section.astro';
+import ExternalLink from '../../components/ExternalLink.astro';
+import { getProjects, hasDetailPage } from '../../lib/content';
+
+export async function getStaticPaths() {
+  const projects = await getProjects();
+  return projects.filter(hasDetailPage).map((entry) => ({ params: { slug: entry.id }, props: { entry } }));
+}
+
+const { entry } = Astro.props;
+const { data } = entry;
+const { Content } = await render(entry);
+---
+
+<Base title={data.title} description={data.summary} type="article">
+  <Section number="01" label={data.tag} first last headingId="case-title">
+    <a href="/case-studies/" class="link text-sm">All case studies</a>
+    <h1 id="case-title" class="mt-4 max-w-[24ch] text-4xl font-semibold leading-[1.1] sm:text-5xl">{data.title}</h1>
+    {data.cover && <Image src={data.cover} alt={data.coverAlt ?? ''} class="mt-10 w-full rounded-xl border border-line" widths={[640, 960, 1280]} sizes="(min-width: 1152px) 1152px, 100vw" />}
+    <dl class="mt-10 grid gap-6 md:grid-cols-3">
+      <div class="rounded-xl border border-line bg-surface p-5"><dt class="label">Problem</dt><dd class="mt-2">{data.problem}</dd></div>
+      <div class="rounded-xl border border-line bg-surface p-5"><dt class="label">What I did</dt><dd class="mt-2">{data.action}</dd></div>
+      <div class="rounded-xl border border-line bg-surface p-5"><dt class="label">Result</dt><dd class="mt-2 font-semibold text-brand">{data.result}</dd></div>
+    </dl>
+    <div class="prose mt-12"><Content /></div>
+    {
+      (data.liveUrl || data.repoUrl) && (
+        <p class="mt-10 flex gap-6">
+          {data.liveUrl && <ExternalLink class="link" href={data.liveUrl}>Live site</ExternalLink>}
+          {data.repoUrl && <ExternalLink class="link" href={data.repoUrl}>Source code</ExternalLink>}
+        </p>
+      )
+    }
+  </Section>
+</Base>

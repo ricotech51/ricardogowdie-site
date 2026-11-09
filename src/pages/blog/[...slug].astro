@@ -1,0 +1,50 @@
+---
+// Builds /blog/ and one page per article, but only once enough articles are
+// published (blogMinArticles in site.json). Before that, no blog pages exist.
+import { render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import Section from '../../components/Section.astro';
+import { getArticles, isBlogVisible } from '../../lib/content';
+
+export async function getStaticPaths() {
+  if (!(await isBlogVisible())) return [];
+  const articles = await getArticles();
+  return [
+    { params: { slug: undefined }, props: { articles, entry: undefined } },
+    ...articles.map((entry) => ({ params: { slug: entry.id }, props: { articles, entry } })),
+  ];
+}
+
+const { articles, entry } = Astro.props;
+const fmt = (d: Date) => d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' });
+const rendered = entry ? await render(entry) : undefined;
+const Content = rendered?.Content;
+---
+
+{
+  entry && Content ? (
+    <Base title={entry.data.title} description={entry.data.description} type="article">
+      <Section number="01" label="Blog" first last headingId="post-title">
+        <a href="/blog/" class="link text-sm">All articles</a>
+        <h1 id="post-title" class="mt-4 max-w-[28ch] text-4xl font-semibold leading-[1.1] sm:text-5xl">{entry.data.title}</h1>
+        <p class="mt-4 font-mono text-sm text-muted"><time datetime={entry.data.date.toISOString()}>{fmt(entry.data.date)}</time></p>
+        <div class="prose mt-10"><Content /></div>
+      </Section>
+    </Base>
+  ) : (
+    <Base title="Blog" description="Notes on network security and infrastructure.">
+      <Section number="01" label="Blog" first last headingId="blog-title">
+        <h1 id="blog-title" class="text-4xl font-semibold sm:text-5xl">Blog</h1>
+        <ul class="mt-10 divide-y divide-line border-y border-line">
+          {articles.map((a) => (
+            <li class="py-6">
+              <p class="font-mono text-sm text-muted"><time datetime={a.data.date.toISOString()}>{fmt(a.data.date)}</time></p>
+              <h2 class="mt-1 text-xl font-semibold"><a class="hover:text-brand hover:underline hover:decoration-plum underline-offset-4" href={`/blog/${a.id}/`}>{a.data.title}</a></h2>
+              <p class="mt-2 max-w-[68ch] text-muted">{a.data.description}</p>
+            </li>
+          ))}
+        </ul>
+      </Section>
+    </Base>
+  )
+}

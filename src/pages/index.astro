@@ -1,0 +1,128 @@
+---
+import Base from '../layouts/Base.astro';
+import Section from '../components/Section.astro';
+import CaseCard from '../components/CaseCard.astro';
+import ExternalLink from '../components/ExternalLink.astro';
+import { getProjects, getSite, splitEmphasis } from '../lib/content';
+
+const site = await getSite();
+const featured = (await getProjects()).filter((p) => p.data.featured).slice(0, 3);
+const h = splitEmphasis(site.hero.headline, site.hero.emphasis);
+
+const proof = [
+  { label: 'In IT since', value: '2009', note: site.credentials.find((c) => c.includes('enterprise')) },
+  { label: 'Certifications', value: String(site.certifications.length), note: site.certifications.slice(0, 2).join(', ') },
+  { label: 'Frameworks', value: String(site.frameworks.length), note: site.frameworks.join(', ') },
+];
+---
+
+<Base>
+  <!-- 01 Hero -->
+  <Section number="01" label={`Network security engineer · ${site.location}`} first headingId="hero-title">
+    <div class="grid gap-12 lg:grid-cols-12 lg:gap-16">
+      <div class="lg:col-span-7">
+        <h1 id="hero-title" class="text-4xl font-semibold leading-[1.08] sm:text-5xl lg:text-[3.75rem]">
+          {h.before}<span class="emph">{h.match}</span>{h.after}
+        </h1>
+        <p class="mt-6 max-w-[60ch] text-lg leading-relaxed text-muted">{site.hero.subline}</p>
+        <div class="mt-8 flex flex-wrap items-center gap-x-6 gap-y-4">
+          <ExternalLink href={site.bookingUrl} class="btn-primary">{site.hero.primaryButton}</ExternalLink>
+          <a href={`mailto:${site.email}`} class="link font-medium">{site.hero.secondaryLink}</a>
+        </div>
+      </div>
+      <aside class="lg:col-span-4 lg:col-start-9" aria-label="At a glance">
+        <ol class="relative space-y-4 before:absolute before:bottom-6 before:left-[1.4rem] before:top-6 before:w-px before:bg-line">
+          {
+            proof.map((p) => (
+              <li class="relative flex gap-4 rounded-xl border border-line bg-surface p-4">
+                <span class="mt-1.5 h-3 w-3 shrink-0 translate-x-[0.18rem] rounded-full border-2 border-brand bg-surface" aria-hidden="true" />
+                <div>
+                  <p class="label">{p.label}</p>
+                  <p class="font-display text-3xl font-semibold text-brand">{p.value}</p>
+                  {p.note && <p class="mt-1 text-sm leading-snug text-muted">{p.note}</p>}
+                </div>
+              </li>
+            ))
+          }
+        </ol>
+      </aside>
+    </div>
+  </Section>
+
+  <!-- 02 Credentials + Recognition -->
+  <Section number="02" label="Credentials" tone="surface" headingId="cred-title">
+    <h2 id="cred-title" class="sr-only">Credentials</h2>
+    <ul class="grid gap-6 sm:grid-cols-3">
+      {site.credentials.map((c) => <li class="border-t border-line pt-4 font-display text-xl font-semibold">{c}</li>)}
+    </ul>
+    <div class="mt-12 grid gap-10 md:grid-cols-12">
+      <div class="md:col-span-7">
+        <h3 class="label">Certifications</h3>
+        <ul class="mt-4 grid gap-x-8 gap-y-2 sm:grid-cols-2">
+          {site.certifications.map((c) => <li class="flex gap-3 leading-snug"><span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-brand" aria-hidden="true" />{c}</li>)}
+        </ul>
+      </div>
+      <div class="md:col-span-5">
+        <h3 class="label">Education</h3>
+        <ul class="mt-4 space-y-2">{site.education.map((e) => <li class="leading-snug">{e}</li>)}</ul>
+      </div>
+    </div>
+    <div class="mt-14">
+      <h3 class="label">Recognition</h3>
+      <ul class="mt-4 grid gap-6 sm:grid-cols-3">
+        {
+          site.recognition.map((r) => (
+            <li class="border-t border-plum/60 pt-4">
+              <p class="font-mono text-sm text-muted">{r.year}</p>
+              <p class="mt-1 font-display text-lg font-semibold">{r.award}</p>
+              <p class="text-muted">{r.organization}</p>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </Section>
+
+  <!-- 03 What I work with -->
+  <Section number="03" label="What I work with" headingId="tools-title">
+    <h2 id="tools-title" class="max-w-[24ch] text-3xl font-semibold leading-tight sm:text-4xl">Tools and platforms I work with.</h2>
+    <div class="mt-10 grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
+      {
+        site.technologies.map((g) => (
+          <div>
+            <h3 class="label">{g.group}</h3>
+            <ul class="mt-4 space-y-2">{g.items.map((i) => <li>{i}</li>)}</ul>
+          </div>
+        ))
+      }
+    </div>
+  </Section>
+
+  <!-- 04 Standards I know -->
+  <Section number="04" label="Standards I know" tone="surface" headingId="std-title">
+    <h2 id="std-title" class="sr-only">Standards I know</h2>
+    <ul class="grid gap-6 sm:grid-cols-3">
+      {site.frameworks.map((f) => <li class="border-t border-line pt-4 font-display text-2xl font-semibold">{f}</li>)}
+    </ul>
+  </Section>
+
+  <!-- 05 Case summaries -->
+  <Section number="05" label="Case summaries" headingId="cases-title">
+    <div class="flex flex-wrap items-end justify-between gap-4">
+      <h2 id="cases-title" class="max-w-[24ch] text-3xl font-semibold leading-tight sm:text-4xl">Results from recent projects.</h2>
+      <a href="/case-studies/" class="link font-medium">All case studies</a>
+    </div>
+    <ul class="mt-10 grid gap-6 md:grid-cols-3">
+      {featured.map((p) => <li><CaseCard entry={p} /></li>)}
+    </ul>
+  </Section>
+
+  <!-- 06 Call to action -->
+  <Section number="06" label="Let's talk" tone="surface" last headingId="cta-title">
+    <h2 id="cta-title" class="max-w-[22ch] text-3xl font-semibold leading-tight sm:text-5xl">{site.closing.headline}</h2>
+    <div class="mt-8 flex flex-wrap items-center gap-x-6 gap-y-4">
+      <ExternalLink href={site.bookingUrl} class="btn-primary">{site.closing.primaryButton}</ExternalLink>
+      <a href={`mailto:${site.email}`} class="link font-medium">{site.closing.secondaryLink}</a>
+    </div>
+  </Section>
+</Base>

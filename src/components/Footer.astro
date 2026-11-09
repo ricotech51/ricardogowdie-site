@@ -1,0 +1,19 @@
+---
+import ExternalLink from './ExternalLink.astro';
+import { getSite, resumeExists } from '../lib/content';
+
+const site = await getSite();
+const hasResume = await resumeExists(site.resumePath);
+const year = new Date().getFullYear();
+---
+
+<footer class="border-t border-line bg-bg">
+  <div class="mx-auto flex max-w-6xl flex-col gap-4 px-4 py-10 text-sm text-muted sm:px-6 md:flex-row md:items-center md:justify-between">
+    <p>© {year} {site.name}. {site.location}.</p>
+    <ul class="flex flex-wrap gap-x-6 gap-y-2">
+      <li><a class="link" href={`mailto:${site.email}`}>{site.email}</a></li>
+      {site.social.map((s) => <li><ExternalLink class="link" href={s.href}>{s.label}</ExternalLink></li>)}
+      {hasResume && <li><a class="link" href={site.resumePath} download>Download CV</a></li>}
+    </ul>
+  </div>
+</footer>

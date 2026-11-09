@@ -1,0 +1,28 @@
+---
+// One home-page section sitting on the network path.
+interface Props {
+  number: string;
+  label: string;
+  id?: string;
+  tone?: 'bg' | 'surface';
+  first?: boolean;
+  last?: boolean;
+  headingId?: string;
+}
+const { number, label, id, tone = 'bg', first = false, last = false, headingId } = Astro.props;
+---
+
+<section
+  id={id}
+  aria-labelledby={headingId}
+  class:list={['net-section', tone === 'surface' ? 'tone-surface' : 'tone-bg']}
+>
+  <div class="mx-auto max-w-6xl px-4 sm:px-6">
+    <div class:list={['net py-16 md:py-24', first && 'net-start', last && 'net-end']}>
+      <p class="label relative"><span class="net-node" aria-hidden="true"></span><span aria-hidden="true">{number} · </span>{label}</p>
+      <div class="mt-6">
+        <slot />
+      </div>
+    </div>
+  </div>
+</section>

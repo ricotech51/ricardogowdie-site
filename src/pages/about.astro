@@ -1,0 +1,78 @@
+---
+import { Image } from 'astro:assets';
+import { getEntry, render } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import Section from '../components/Section.astro';
+import ExternalLink from '../components/ExternalLink.astro';
+import { getExperience, getSite, resumeExists } from '../lib/content';
+import avatar from '../assets/avatar.jpg';
+
+const site = await getSite();
+const about = await getEntry('pages', 'about');
+if (!about) throw new Error('src/content/pages/about.md is missing.');
+const { Content } = await render(about);
+const experience = await getExperience();
+const hasResume = await resumeExists(site.resumePath);
+---
+
+<Base title={about.data.title} description={about.data.description}>
+  <Section number="01" label="About" first headingId="about-title">
+    <div class="grid gap-12 lg:grid-cols-12 lg:gap-16">
+      <div class="lg:col-span-7">
+        <h1 id="about-title" class="text-4xl font-semibold leading-[1.1] sm:text-5xl">I'm {site.name}.</h1>
+        <div class="prose mt-8 text-lg text-ink"><Content /></div>
+        <div class="mt-8 flex flex-wrap items-center gap-x-6 gap-y-4">
+          <ExternalLink href={site.bookingUrl} class="btn-primary">Book a Call</ExternalLink>
+          {hasResume && <a href={site.resumePath} class="link font-medium" download>Download CV</a>}
+        </div>
+      </div>
+      <div class="lg:col-span-4 lg:col-start-9">
+        <Image
+          src={avatar}
+          alt={`Portrait of ${site.name}`}
+          widths={[320, 480, 640]}
+          sizes="(min-width: 1024px) 320px, 60vw"
+          class="w-full max-w-xs rounded-xl border border-line"
+          loading="eager"
+        />
+        <p class="mt-4 text-sm text-muted">{site.location}. {site.availability}</p>
+      </div>
+    </div>
+  </Section>
+
+  <Section number="02" label="How I work with teams" tone="surface" headingId="teams-title">
+    <h2 id="teams-title" class="max-w-[24ch] text-3xl font-semibold leading-tight sm:text-4xl">How I work with teams</h2>
+    {site.howIWork.intro && <p class="mt-4 max-w-[60ch] text-lg text-muted">{site.howIWork.intro}</p>}
+    <ol class="mt-10 grid gap-6 sm:grid-cols-2">
+      {
+        site.howIWork.steps.map((s, i) => (
+          <li class="rounded-xl border border-line bg-bg p-6">
+            <p class="font-mono text-sm text-brand">{String(i + 1).padStart(2, '0')}</p>
+            <h3 class="mt-2 text-lg font-semibold">{s.title}</h3>
+            <p class="mt-2 leading-relaxed text-muted">{s.text}</p>
+          </li>
+        ))
+      }
+    </ol>
+  </Section>
+
+  <Section number="03" label="Where I've worked" last headingId="work-title">
+    <h2 id="work-title" class="sr-only">Where I've worked</h2>
+    <ul class="grid gap-4 sm:grid-cols-2">
+      {
+        experience.map((e) => (
+          <li class="flex items-center gap-4 rounded-xl border border-line bg-surface p-4">
+            {e.data.logo ? (
+              <Image src={e.data.logo} alt="" width={48} height={48} class="h-12 w-12 rounded-lg border border-line bg-white object-contain p-1" />
+            ) : (
+              <span class="grid h-12 w-12 place-items-center rounded-lg border border-line font-mono text-sm text-brand" aria-hidden="true">
+                {e.data.company.slice(0, 2).toUpperCase()}
+              </span>
+            )}
+            <span class="font-display text-lg font-semibold">{e.data.company}</span>
+          </li>
+        ))
+      }
+    </ul>
+  </Section>
+</Base>

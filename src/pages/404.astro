@@ -1,0 +1,11 @@
+---
+import Base from '../layouts/Base.astro';
+import Section from '../components/Section.astro';
+---
+
+<Base title="Page not found" noindex>
+  <Section number="404" label="Not found" first last headingId="nf-title">
+    <h1 id="nf-title" class="text-4xl font-semibold sm:text-5xl">This page <span class="emph">isn't here</span>.</h1>
+    <p class="mt-4 text-lg text-muted">It may have moved. Try the <a class="link" href="/">home page</a>.</p>
+  </Section>
+</Base>

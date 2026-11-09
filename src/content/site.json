@@ -1,0 +1,75 @@
+{
+  "name": "Ricardo J. Gowdie",
+  "title": "Ricardo J. Gowdie, Network Security Engineer",
+  "description": "Network security engineer in Fayetteville, NC. I build and secure networks that stay up, with segmentation, firewalls, and reliable infrastructure.",
+  "location": "Fayetteville, NC",
+  "availability": "Available for remote or hybrid consulting and freelance projects on Eastern Time.",
+  "email": "hello@ricardogowdie.com",
+  "bookingUrl": "https://outlook.office.com/book/RicardoGowdie@ricardogowdie.com/",
+  "resumePath": "/Ricardo_J_Gowdie_Resume.pdf",
+  "social": [
+    { "label": "LinkedIn", "href": "https://linkedin.com/in/ricardogowdie/" }
+  ],
+  "hero": {
+    "headline": "I build and secure networks that stay up.",
+    "emphasis": "stay up",
+    "subline": "I'm a network security engineer. I've worked in IT since 2009 and in enterprise networks since 2017, and I take on consulting and freelance projects. Need your network locked down? Let's talk.",
+    "primaryButton": "Book a Call",
+    "secondaryLink": "Email me"
+  },
+  "credentials": [
+    "In IT since 2009",
+    "9+ years in enterprise networks",
+    "2,000+ devices supported"
+  ],
+  "certifications": [
+    "ISC2 Certified in Cybersecurity (CC)",
+    "Fortinet NSE 1, 2 and 3",
+    "Microsoft Azure Fundamentals (AZ-900)",
+    "Information Security Manager (NCTVET)",
+    "Data Protection (University of the West Indies)",
+    "Cisco IT Essentials",
+    "Claude Certified Associate Foundations (Anthropic)"
+  ],
+  "education": [
+    "BSc (Hons.) Information Technology, University of Technology, Jamaica"
+  ],
+  "recognition": [
+    { "award": "Top Performer", "organization": "eClerx", "year": 2026 },
+    { "award": "Staff of the Year", "organization": "Scientific Research Council", "year": 2025 },
+    { "award": "Top Performer", "organization": "Sutherland", "year": 2019 }
+  ],
+  "technologies": [
+    {
+      "group": "Network",
+      "items": ["Fortinet FortiGate", "Cisco", "Ubiquiti UniFi", "SD-WAN", "VPNs", "VLANs and segmentation", "DNS and DHCP"]
+    },
+    {
+      "group": "Monitoring",
+      "items": ["Wireshark", "FortiView", "Auvik"]
+    },
+    {
+      "group": "Identity and cloud",
+      "items": ["Active Directory", "Entra ID", "Microsoft 365"]
+    },
+    {
+      "group": "Systems and automation",
+      "items": ["Windows Server", "Linux", "Hyper-V", "PowerShell", "Ansible", "Docker", "ServiceNow"]
+    }
+  ],
+  "frameworks": ["ISO 27001", "NIST CSF", "Jamaica Data Protection Act"],
+  "howIWork": {
+    "steps": [
+      { "title": "Train and mentor", "text": "I train and mentor support staff on troubleshooting, escalation, and documentation." },
+      { "title": "Own the incident", "text": "I own high-priority incidents from start to finish and keep stakeholders informed until they're resolved." },
+      { "title": "Work with vendors", "text": "I work with vendors and managed service providers to fix problems." },
+      { "title": "Write it down", "text": "I write runbooks so the next person doesn't start from zero." }
+    ]
+  },
+  "closing": {
+    "headline": "Need someone who can secure and support your network?",
+    "primaryButton": "Book a Call",
+    "secondaryLink": "Email me"
+  },
+  "blogMinArticles": 2
+}

@@ -1,0 +1,12 @@
+---
+// Every link to another website goes through this, so it always gets
+// rel="noopener noreferrer" and opens safely.
+interface Props {
+  href: string;
+  class?: string;
+  'aria-label'?: string;
+}
+const { href, class: className, ...rest } = Astro.props;
+---
+
+<a href={href} class={className} rel="noopener noreferrer" target="_blank" {...rest}><slot /><span class="sr-only"> (opens in a new tab)</span></a>
