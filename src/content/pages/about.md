@@ -3,7 +3,7 @@ title: About
 description: How I got into IT, my years in BPO customer operations, and the infrastructure I plan, design and build today.
 ---
 
-I got into IT because I have a knack for connecting things and making them work together, and because I saw there weren't enough qualified people doing it.
+I got into IT because I have a knack for connecting things and making them work together.
 
 I've been in IT since 2009. Most of that time has been in the customer operations side of business process outsourcing (BPO), at companies that support Fortune 500 clients. In that work, downtime is felt right away by the teams serving customers, so I learned early to build infrastructure that stays up.
 
