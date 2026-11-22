@@ -147,13 +147,14 @@
   ],
   "aiOffer": {
     "headline": "I help teams put AI to work.",
-    "text": "I hold the Claude Certified Associate Foundations certification, and I help organizations plan and implement AI. I teach executives and staff how to use it in their daily work, and I build the pieces that make it stick.",
+    "text": "I hold the Claude Certified Associate Foundations certification, and I help organizations plan and implement AI. I teach executives and staff how to use it in their daily work, and I build the pieces that make it stick. This website is one example: I set the requirements, the design and the security rules, and reviewed and approved each phase, while Claude wrote the code and deployed it. It runs on Cloudflare Pages with strict security headers rated A+.",
     "items": [
       "Hands-on training for executives and staff",
       "AI workflows for everyday tasks",
       "Agents and skills for repeat work",
       "MCP servers that connect AI to your systems",
-      "Instruction files (CLAUDE.md and other Markdown files) that keep AI consistent"
+      "Instruction files (CLAUDE.md and other Markdown files) that keep AI consistent",
+      "Websites planned, built and deployed by directing Claude, like this one"
     ]
   },
   "personalNote": "I got into IT because I have a knack for connecting things and making them work together. That started in Jamaica in 2009. Today I work from Fayetteville, NC.",
