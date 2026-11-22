@@ -1,6 +1,6 @@
 ---
-title: About
-description: How I got into IT, my years in BPO customer operations, and the infrastructure I plan, design and build today.
+title: About my IT infrastructure and network work
+description: IT infrastructure and network engineer in Fayetteville, NC, with years in BPO customer operations. Active Directory, DNS, DHCP, Azure and network work.
 ---
 
 I got into IT because I have a knack for connecting things and making them work together.

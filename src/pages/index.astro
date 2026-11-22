@@ -11,6 +11,37 @@ const site = await getSite();
 const projects = (await getProjects()).filter((p) => p.data.featured);
 const h = splitEmphasis(site.hero.headline, site.hero.emphasis);
 
+const siteUrl = new URL('/', Astro.site).href;
+const knowsAbout = ['IT infrastructure', 'Active Directory', 'DNS', 'DHCP', ...site.technologies.flatMap((g) => g.items)];
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Person',
+      '@id': `${siteUrl}#person`,
+      name: site.name,
+      jobTitle: 'IT Infrastructure Engineer',
+      url: siteUrl,
+      image: new URL('/og.png', Astro.site).href,
+      address: { '@type': 'PostalAddress', addressLocality: 'Fayetteville', addressRegion: 'NC', addressCountry: 'US' },
+      knowsAbout: [...new Set(knowsAbout)],
+      hasCredential: site.certifications.map((c) => ({ '@type': 'EducationalOccupationalCredential', name: c })),
+      sameAs: site.social.map((s) => s.href),
+    },
+    {
+      '@type': 'ProfessionalService',
+      '@id': `${siteUrl}#service`,
+      name: `${site.name}, IT infrastructure consulting`,
+      url: siteUrl,
+      description: site.description,
+      founder: { '@id': `${siteUrl}#person` },
+      address: { '@type': 'PostalAddress', addressLocality: 'Fayetteville', addressRegion: 'NC', addressCountry: 'US' },
+      areaServed: [{ '@type': 'City', name: 'Fayetteville, NC' }, { '@type': 'Country', name: 'United States' }],
+      serviceType: ['IT infrastructure', 'Network design', 'Active Directory', 'DNS and DHCP', 'Microsoft 365', 'Microsoft Azure', 'Backup and disaster recovery'],
+    },
+  ],
+};
+
 const proof = [
   { label: 'In IT since', value: '2009', note: site.credentials.find((c) => c.includes('enterprise')) },
   { label: 'Certifications', value: String(site.certifications.length), note: site.certifications.slice(0, 2).join(', ') },
@@ -18,7 +49,7 @@ const proof = [
 ];
 ---
 
-<Base>
+<Base jsonLd={jsonLd}>
   <!-- 01 Hero -->
   <Section number="01" label={`IT infrastructure engineer · ${site.location}`} first headingId="hero-title">
     <div class="grid gap-12 lg:grid-cols-12 lg:gap-16">

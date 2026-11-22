@@ -1,7 +1,7 @@
 {
   "name": "Ricardo J. Gowdie",
-  "title": "Ricardo J. Gowdie, IT Infrastructure Engineer",
-  "description": "IT infrastructure engineer in Fayetteville, NC. I plan, design and build infrastructure that stays up: clusters, backups, cloud, identity and networks.",
+  "title": "Ricardo J. Gowdie | IT Infrastructure and Network Engineer, Fayetteville NC",
+  "description": "IT infrastructure and network engineer in Fayetteville, NC: Active Directory, DNS, DHCP, Hyper-V, Azure, Microsoft 365 and network design. On site or remote.",
   "location": "Fayetteville, NC",
   "availability": "Available for remote or hybrid consulting and freelance projects on Eastern Time.",
   "email": "hello@ricardogowdie.com",
@@ -16,7 +16,7 @@
   "hero": {
     "headline": "I plan, design and build IT infrastructure that stays up.",
     "emphasis": "stays up",
-    "subline": "I've worked in IT since 2009 and in enterprise environments since 2017. I take on consulting projects and infrastructure work: failover clusters, backups, cloud, identity, and the networks that tie them together. Let's talk about yours.",
+    "subline": "I've worked in IT since 2009 and in enterprise environments since 2017. I take on consulting projects and infrastructure work: failover clusters, backups, Azure, Active Directory and Entra ID, and the networks, DNS and DHCP that tie them together. Let's talk about yours.",
     "primaryButton": "Book a Call",
     "secondaryLink": "Email me"
   },
