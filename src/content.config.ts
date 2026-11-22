@@ -22,6 +22,15 @@ const projects = defineCollection({
         cover: image().optional(),
         coverAlt: z.string().optional(),
         tech: z.array(z.string()).default([]),
+        // Where the work happened, e.g. "Scientific Research Council" or "Consulting work".
+        where: z.string().min(1).optional(),
+        // One picture that shows the work: a diagram, a plan, a board.
+        // Use a sample with made-up names, never a real client screenshot.
+        artifact: image().optional(),
+        artifactAlt: z.string().optional(),
+        // A word or two for the kind of artifact, e.g. "Diagram" or "Runbook".
+        artifactKind: z.string().optional(),
+        artifactCaption: z.string().default('Representative example, details changed.'),
         problem: z.string().min(1),
         action: z.string().min(1),
         result: z.string().min(1),
@@ -35,6 +44,10 @@ const projects = defineCollection({
       .refine((p) => !p.cover || !!p.coverAlt, {
         message: 'Add coverAlt (a short description of the image) when you set a cover.',
         path: ['coverAlt'],
+      })
+      .refine((p) => !p.artifact || (!!p.artifactAlt && !!p.artifactKind), {
+        message: 'Add artifactAlt and artifactKind when you set an artifact.',
+        path: ['artifactAlt'],
       }),
 });
 
@@ -129,6 +142,10 @@ const site = defineCollection({
         z.object({ group: z.string().min(1), items: z.array(z.string().min(1)).min(1) }).strict(),
       ),
       frameworks: z.array(z.string().min(1)).min(1),
+      // Home page: the four stages of how I take on infrastructure work.
+      approach: z.array(z.object({ title: z.string().min(1), text: z.string().min(1) }).strict()).min(1),
+      // Home page: a few sentences in my own words, next to my photo.
+      personalNote: z.string().min(1),
       howIWork: z
         .object({
           intro: z.string().min(1).optional(),

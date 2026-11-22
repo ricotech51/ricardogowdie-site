@@ -15,13 +15,23 @@ date: 2026-01-31
 tech:
   - Fortinet FortiGate
   - VLANs and segmentation
+# Where the work happened, e.g. Scientific Research Council or Consulting work.
+where: Company or "Consulting work"
+# Optional picture of the work (diagram, plan, board). Use a SAMPLE with made-up
+# names and addresses, never a real client screenshot. Put it in src/assets/artifacts/.
+# artifact: ../../assets/artifacts/my-diagram.png
+# artifactKind: Diagram
+# artifactAlt: What the picture shows, in one sentence
+# The caption defaults to "Representative example, details changed."
 problem: What was wrong before I started.
 action: What I did.
 result: What changed, approximately N%.
+# While a number is a guess, start the result with [ESTIMATE: confirm].
+# The live site will not publish until you replace it with the real number.
 # Optional links. Delete the line if there isn't one.
 # liveUrl: https://example.com
 # repoUrl: https://github.com/ricotech51/example
-# featured: true shows it on the Home page (up to three).
+# featured: true shows it in the numbered list on the Home page.
 featured: false
 # draft: true keeps it off the live site while you work on it.
 draft: true

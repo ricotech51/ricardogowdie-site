@@ -1,0 +1,3 @@
+# Old links keep working after Case Studies was renamed to Projects.
+/case-studies/ /projects/ 301
+/case-studies/* /projects/:splat 301
