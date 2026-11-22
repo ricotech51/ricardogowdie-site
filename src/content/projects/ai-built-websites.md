@@ -1,39 +1,43 @@
 ---
-title: Websites built and deployed by directing Claude
+title: Websites planned, built and deployed with Claude
 tag: AI
 where: Consulting work
-summary: "I build and deploy websites by directing Claude. I lead the project and make the decisions, and Claude writes the code and ships it. This site is one example."
+summary: "I set up the infrastructure for a website and run the project with Claude: GitHub, Visual Studio Code with Claude Code, the domain, and Cloudflare for DNS, hosting and security."
 tech:
-  - Claude
-  - Astro
-  - Cloudflare Pages
+  - Claude Code
+  - Visual Studio Code
   - GitHub
+  - Cloudflare Pages and DNS
+  - Namecheap
+  - Astro
 artifact: ../../assets/artifacts/10-ai-built-websites.png
-artifactKind: Delivery process
-artifactAlt: "Sample delivery board for an AI-built website: five phases (plan, design, build, secure, deploy) showing what I decide, what Claude does, and the sign-off at each phase, plus the review loop every change follows."
+artifactKind: Setup and delivery plan
+artifactAlt: "Sample setup plan for a website built with Claude: the stack from Visual Studio Code and Claude Code to GitHub, Cloudflare Pages and DNS, and a Namecheap domain, then the plan, design, build and deploy steps with a sign-off at each one."
 problem: "Small organizations need a fast, secure website they own, without paying for a large build or being tied to a page builder."
-action: "I run each website as a project: I set the requirements, the design direction and the security rules, and I review and approve every phase. Claude writes the code, opens each change as a pull request with a preview link, and deploys it to Cloudflare Pages once I approve."
-result: "This website was built this way and is live, with strict security headers rated A+. The client owns the code, the hosting and the domain."
+action: "I set up the stack: a GitHub repository with a protected main branch, Visual Studio Code with Claude Code, a domain registered at Namecheap with DNS moved to Cloudflare, and Cloudflare Pages for hosting. Then I run the project in phases (plan, design, build, deploy), with Claude writing the code and me reviewing and approving each phase."
+result: "A fast, secure website the client owns outright: the code in their GitHub, hosting in their Cloudflare account, and the domain in their name. Every change gets a preview link before it goes live."
 featured: true
 draft: false
 order: 0.5
 ---
 
-## How I work
+## The stack and how each piece is set up
 
-I treat a website like any other infrastructure project. I plan it, make the design decisions, set the rules, and sign off each phase. Claude does the hands-on work: it writes the code and the pages, builds the site, and deploys it. Nothing reaches the live site until I approve it.
+1. **GitHub repository.** A private repository holds the site's code and full history. The main branch is protected, so changes arrive as pull requests on their own branches, and only an approved pull request reaches main.
+2. **Visual Studio Code and Claude Code.** I clone the repository in Visual Studio Code and run Claude Code in it. A CLAUDE.md file in the repository gives Claude the project's rules: the design system, the content style, and what must never be published.
+3. **Domain at Namecheap.** The domain is registered at Namecheap in the client's name. I point its nameservers to Cloudflare, so DNS is managed in one place.
+4. **Cloudflare DNS.** I recreate the records that matter, such as the email records for Microsoft 365 (MX, SPF, DKIM and DMARC), and add the website records.
+5. **Cloudflare Pages.** Pages connects to the GitHub repository. A push to main deploys the live site, and every branch gets its own private preview link. The apex domain and www are added as custom domains, with HTTPS managed by Cloudflare.
+6. **Security headers.** A headers file sets a strict content security policy, HSTS and the other standard headers, with no third-party scripts. I check the result with a header scanner before launch.
+7. **Build checks.** A GitHub Actions check runs on every pull request: it builds the site, audits dependencies, and fails if a page still shows placeholder text or personal data.
 
-Every change follows the same loop. I describe the change in plain English. Claude makes it on a separate branch, and I review it on a private preview link. Only my approval merges it to the live site.
+## How a project runs
 
-## This site as the example
+- **Plan.** I agree the audience, goals, pages and content rules with the client. Claude turns that into a written plan with open questions.
+- **Design.** Claude drafts design directions and sample pages. The client picks one, and I approve the headline and tone with them.
+- **Build.** Claude writes the code and content on a branch. I review each change on its preview link and ask for fixes in plain English.
+- **Deploy.** Once the preview is approved, I merge the pull request, Cloudflare deploys it, and I check the live site, the DNS and the security headers.
 
-- **Plan:** I set the audience, the goals and the content rules, such as no phone number, no home address and no client names.
-- **Design:** I chose a design direction from the options Claude drafted, and approved the headline and tone.
-- **Build:** Claude wrote the site in Astro and Tailwind CSS, in a GitHub repository I own.
-- **Secure:** I required no third-party scripts and a strict content security policy. The security headers are rated A+.
-- **Guardrails:** The build refuses to go live while any page still shows placeholder text or an unconfirmed number.
-- **Deploy:** Each approved change deploys to Cloudflare Pages, and the domain, DNS and email records stay in my own accounts.
+## What the client keeps
 
-## What a client gets
-
-A fast, secure website they own outright: the code, the hosting account and the domain. They also get a simple way to change it later, by asking for the change in plain English and approving a preview.
+The client owns the GitHub repository, the Cloudflare account and the domain. Changes later follow the same loop: ask for the change, review the preview, approve it.
