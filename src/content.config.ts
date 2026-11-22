@@ -144,6 +144,10 @@ const site = defineCollection({
       frameworks: z.array(z.string().min(1)).min(1),
       // Home page: the four stages of how I take on infrastructure work.
       approach: z.array(z.object({ title: z.string().min(1), text: z.string().min(1) }).strict()).min(1),
+      // Home page: the AI section (what I teach and build).
+      aiOffer: z
+        .object({ headline: z.string().min(1), text: z.string().min(1), items: z.array(z.string().min(1)).min(1) })
+        .strict(),
       // Home page: a few sentences in my own words, next to my photo.
       personalNote: z.string().min(1),
       howIWork: z

@@ -37,7 +37,7 @@ const jsonLd = {
       founder: { '@id': `${siteUrl}#person` },
       address: { '@type': 'PostalAddress', addressLocality: 'Fayetteville', addressRegion: 'NC', addressCountry: 'US' },
       areaServed: [{ '@type': 'City', name: 'Fayetteville, NC' }, { '@type': 'Country', name: 'United States' }],
-      serviceType: ['IT infrastructure', 'Network design', 'Active Directory', 'DNS and DHCP', 'Microsoft 365', 'Microsoft Azure', 'Backup and disaster recovery'],
+      serviceType: ['IT infrastructure', 'Network design', 'Active Directory', 'DNS and DHCP', 'Microsoft 365', 'Microsoft Azure', 'Backup and disaster recovery', 'AI enablement and training'],
     },
   ],
 };
@@ -109,8 +109,22 @@ const proof = [
     </ol>
   </Section>
 
-  <!-- 04 A note from me -->
-  <Section number="04" label="A note from me" tone="surface" headingId="note-title">
+  <!-- 04 AI for your team -->
+  <Section number="04" label="AI for your team" tone="surface" headingId="ai-title">
+    <div class="grid gap-10 lg:grid-cols-12">
+      <div class="lg:col-span-6">
+        <h2 id="ai-title" class="max-w-[22ch] text-3xl font-semibold leading-tight sm:text-4xl">{site.aiOffer.headline}</h2>
+        <p class="mt-6 max-w-[56ch] text-lg leading-relaxed text-muted">{site.aiOffer.text}</p>
+        <div class="mt-8"><ExternalLink href={site.bookingUrl} class="btn-primary">{site.hero.primaryButton}</ExternalLink></div>
+      </div>
+      <ul class="lg:col-span-5 lg:col-start-8">
+        {site.aiOffer.items.map((i) => <li class="border-t border-line py-3 font-display text-lg font-semibold last:border-b">{i}</li>)}
+      </ul>
+    </div>
+  </Section>
+
+  <!-- 05 A note from me -->
+  <Section number="05" label="A note from me" headingId="note-title">
     <h2 id="note-title" class="sr-only">A note from me</h2>
     <div class="grid items-center gap-8 sm:grid-cols-[9rem_1fr] sm:gap-10">
       <Image src={avatar} alt={`Portrait of ${site.name}`} widths={[144, 288]} sizes="144px" class="h-36 w-36 rounded-full border border-line object-cover" />
@@ -121,8 +135,8 @@ const proof = [
     </div>
   </Section>
 
-  <!-- 05 What I work with -->
-  <Section number="05" label="What I work with" headingId="tools-title">
+  <!-- 06 What I work with -->
+  <Section number="06" label="What I work with" tone="surface" headingId="tools-title">
     <h2 id="tools-title" class="max-w-[24ch] text-3xl font-semibold leading-tight sm:text-4xl">Tools and platforms I work with.</h2>
     <div class="mt-10 grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
       {
@@ -136,8 +150,8 @@ const proof = [
     </div>
   </Section>
 
-  <!-- 06 Credentials, standards and recognition -->
-  <Section number="06" label="Credentials" tone="surface" headingId="cred-title">
+  <!-- 07 Credentials, standards and recognition -->
+  <Section number="07" label="Credentials" headingId="cred-title">
     <h2 id="cred-title" class="sr-only">Credentials</h2>
     <ul class="grid gap-6 sm:grid-cols-3">
       {site.credentials.map((c) => <li class="border-t border-line pt-4 font-display text-xl font-semibold">{c}</li>)}
@@ -172,8 +186,8 @@ const proof = [
     </div>
   </Section>
 
-  <!-- 07 Call to action -->
-  <Section number="07" label="Let's talk" last headingId="cta-title">
+  <!-- 08 Call to action -->
+  <Section number="08" label="Let's talk" tone="surface" last headingId="cta-title">
     <h2 id="cta-title" class="max-w-[22ch] text-3xl font-semibold leading-tight sm:text-5xl">{site.closing.headline}</h2>
     <div class="mt-8 flex flex-wrap items-center gap-x-6 gap-y-4">
       <ExternalLink href={site.bookingUrl} class="btn-primary">{site.closing.primaryButton}</ExternalLink>

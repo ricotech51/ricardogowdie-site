@@ -109,6 +109,16 @@
         "Auvik",
         "ServiceNow"
       ]
+    },
+    {
+      "group": "AI",
+      "items": [
+        "Claude",
+        "RAG (retrieval-augmented generation)",
+        "Agents and skills",
+        "MCP servers",
+        "AI workflows"
+      ]
     }
   ],
   "frameworks": [
@@ -135,6 +145,17 @@
       "text": "I leave runbooks and monitoring so the next person doesn't start from zero."
     }
   ],
+  "aiOffer": {
+    "headline": "I help teams put AI to work.",
+    "text": "I hold the Claude Certified Associate Foundations certification, and I help organizations plan and implement AI. I teach executives and staff how to use it in their daily work, and I build the pieces that make it stick.",
+    "items": [
+      "Hands-on training for executives and staff",
+      "AI workflows for everyday tasks",
+      "Agents and skills for repeat work",
+      "MCP servers that connect AI to your systems",
+      "Instruction files (CLAUDE.md and other Markdown files) that keep AI consistent"
+    ]
+  },
   "personalNote": "I got into IT because I have a knack for connecting things and making them work together. That started in Jamaica in 2009. Today I work from Fayetteville, NC.",
   "howIWork": {
     "steps": [
