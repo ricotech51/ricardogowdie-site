@@ -6,10 +6,9 @@ summary: "I led the migration from Exchange to Microsoft 365. Email downtime dro
 tech:
   - Microsoft 365
   - Exchange
-  - Entra Connect
 artifact: ../../assets/artifacts/08-m365-migration.png
 artifactKind: Migration plan
-artifactAlt: "Sample ten-week migration timeline: assess, prepare, pilot, three batches, mail flow cutover, then retiring Exchange."
+artifactAlt: "Sample migration timeline: a few weeks of planning and a pilot, then a one-week cutover with three batches, the mail flow switch, and follow-up support."
 problem: "[PLACEHOLDER] What was wrong before you started? One or two sentences."
 action: "I led the migration from Exchange to Microsoft 365 and coordinated vendors, service providers, and internal teams through the rollout."
 result: "Approximately 90% less email downtime."

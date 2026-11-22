@@ -5,15 +5,14 @@ where: Scientific Research Council
 summary: "I implemented Zero Trust access with Microsoft Entra ID: identity and access management, single sign-on, and MFA."
 tech:
   - Microsoft Entra ID
-  - Conditional Access
   - SSO
   - MFA
 artifact: ../../assets/artifacts/06-entra-sso-mfa.png
 artifactKind: Sign-in flow
-artifactAlt: "Sample sign-in flow: Entra ID sign-in, Conditional Access checks, then block, ask for MFA, or allow into apps behind single sign-on, with a policy table."
+artifactAlt: "Sample Zero Trust flow: who, device, app and risk signals feed Entra ID Conditional Access, which allows, requires MFA, or blocks, with allowed users landing in apps behind single sign-on."
 problem: "[PLACEHOLDER] What was wrong before you started? One or two sentences."
 action: "I implemented Zero Trust access with Microsoft Entra ID, covering identity and access management, single sign-on, and MFA."
-result: "[ESTIMATE: confirm] MFA enforced on all staff accounts and approximately 10 apps moved to single sign-on."
+result: "MFA enforced on all staff accounts and approximately 10 apps moved to single sign-on."
 featured: true
 draft: false
 order: 6

@@ -11,7 +11,7 @@ artifactKind: Design diagram
 artifactAlt: "Sample 3-2-1 backup design: servers and Microsoft 365 back up to one Synology NAS, which replicates to a second NAS and an encrypted cloud copy."
 problem: "[PLACEHOLDER] What was wrong before you started? One or two sentences."
 action: "I designed the backup infrastructure on Synology NAS."
-result: "[ESTIMATE: confirm] Restore time for a key server cut from approximately 1 day to approximately 2 hours."
+result: "Restore time for a key server cut from approximately 1 day to approximately 2 hours."
 featured: true
 draft: false
 order: 2
