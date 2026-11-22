@@ -14,14 +14,14 @@ A fully static site built with Astro, TypeScript, and Tailwind CSS. There is no 
 | What | Where |
 | --- | --- |
 | Name, headline, credentials, tools, awards, links | `src/content/site.json` |
-| Case studies | `src/content/projects/*.md` |
+| Projects | `src/content/projects/*.md` |
 | Experience | `src/content/experience/*.md` |
 | Blog articles | `src/content/articles/*.md` |
 | About page text | `src/content/pages/about.md` |
 | Images | `src/assets/` |
 | Resume PDF (public version only) | `public/Ricardo_J_Gowdie_Resume.pdf` |
 
-## Adding a case study, experience entry, or article
+## Adding a project, experience entry, or article
 
 1. Copy the matching file from `templates/` into its folder under `src/content/`.
 2. Rename it with lowercase words and dashes, for example `firewall-refresh.md`.

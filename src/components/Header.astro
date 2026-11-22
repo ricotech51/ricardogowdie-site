@@ -9,7 +9,7 @@ const path = Astro.url.pathname;
 const links = [
   { href: '/', label: 'Hire Me' },
   { href: '/about/', label: 'About' },
-  { href: '/case-studies/', label: 'Case Studies' },
+  { href: '/projects/', label: 'Projects' },
   ...(blog ? [{ href: '/blog/', label: 'Blog' }] : []),
 ];
 const isCurrent = (href: string) => (href === '/' ? path === '/' : path.startsWith(href));

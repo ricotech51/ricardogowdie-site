@@ -11,8 +11,31 @@ export async function getSite() {
 }
 
 export async function getProjects() {
-  return (await getCollection('projects', ({ data }) => !data.draft)).sort(byOrder);
+  const projects = (await getCollection('projects', ({ data }) => !data.draft)).sort(byOrder);
+  // Estimated results are for review only. The live site (main branch on
+  // Cloudflare Pages) refuses to build while any result is still an estimate.
+  if (process.env.CF_PAGES_BRANCH === 'main') {
+    const pending = projects
+      .filter((p) => isEstimate(p.data.result) || [p.data.summary, p.data.action, p.data.result].some(hasPlaceholder))
+      .map((p) => p.id);
+    if (pending.length) {
+      throw new Error(`Replace [ESTIMATE: confirm] or [PLACEHOLDER] text in the card fields of: ${pending.join(', ')}`);
+    }
+  }
+  return projects;
 }
+
+// A result still waiting for Ricardo to confirm it.
+export const ESTIMATE_MARK = '[ESTIMATE: confirm]';
+export function isEstimate(text: string) {
+  return text.includes(ESTIMATE_MARK);
+}
+export function withoutEstimateMark(text: string) {
+  return text.replace(ESTIMATE_MARK, '').trim();
+}
+
+const hasPlaceholder = (text?: string) => !!text && text.includes('[PLACEHOLDER]');
+export { hasPlaceholder };
 
 export async function getExperience() {
   return (await getCollection('experience', ({ data }) => !data.draft)).sort(byOrder);
@@ -29,9 +52,12 @@ export async function isBlogVisible() {
   return articles.length >= site.blogMinArticles;
 }
 
-// A case study only gets its own page once its details are written
-// (no [PLACEHOLDER] left in the problem or the body). Until then it shows as a card only.
-export function hasDetailPage(entry: { body?: string; data: { problem: string } }) {
+// A project gets its own page once its details are written
+// (no [PLACEHOLDER] left in the problem or the body).
+// A project also gets a page once it has an artifact to show; any part still
+// marked [PLACEHOLDER] is left off that page.
+export function hasDetailPage(entry: { body?: string; data: { problem: string; artifact?: unknown } }) {
+  if (entry.data.artifact) return true;
   const text = `${entry.data.problem}\n${entry.body ?? ''}`;
   return !text.includes('[PLACEHOLDER]') && (entry.body ?? '').trim().length > 0;
 }

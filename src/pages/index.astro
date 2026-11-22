@@ -1,24 +1,57 @@
 ---
 import Base from '../layouts/Base.astro';
 import Section from '../components/Section.astro';
-import CaseCard from '../components/CaseCard.astro';
+import ProjectRow from '../components/ProjectRow.astro';
+import { Image } from 'astro:assets';
+import avatar from '../assets/avatar.jpg';
 import ExternalLink from '../components/ExternalLink.astro';
 import { getProjects, getSite, splitEmphasis } from '../lib/content';
 
 const site = await getSite();
-const featured = (await getProjects()).filter((p) => p.data.featured).slice(0, 3);
+const projects = (await getProjects()).filter((p) => p.data.featured);
 const h = splitEmphasis(site.hero.headline, site.hero.emphasis);
+
+const siteUrl = new URL('/', Astro.site).href;
+const knowsAbout = ['IT infrastructure', 'Active Directory', 'DNS', 'DHCP', ...site.technologies.flatMap((g) => g.items)];
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Person',
+      '@id': `${siteUrl}#person`,
+      name: site.name,
+      jobTitle: 'IT Infrastructure Engineer',
+      url: siteUrl,
+      image: new URL('/og.png', Astro.site).href,
+      address: { '@type': 'PostalAddress', addressLocality: 'Fayetteville', addressRegion: 'NC', addressCountry: 'US' },
+      knowsAbout: [...new Set(knowsAbout)],
+      hasCredential: site.certifications.map((c) => ({ '@type': 'EducationalOccupationalCredential', name: c })),
+      sameAs: site.social.map((s) => s.href),
+    },
+    {
+      '@type': 'ProfessionalService',
+      '@id': `${siteUrl}#service`,
+      name: `${site.name}, IT infrastructure consulting`,
+      url: siteUrl,
+      description: site.description,
+      founder: { '@id': `${siteUrl}#person` },
+      address: { '@type': 'PostalAddress', addressLocality: 'Fayetteville', addressRegion: 'NC', addressCountry: 'US' },
+      areaServed: [{ '@type': 'City', name: 'Fayetteville, NC' }, { '@type': 'Country', name: 'United States' }],
+      serviceType: ['IT infrastructure', 'Network design', 'Active Directory', 'DNS and DHCP', 'Microsoft 365', 'Microsoft Azure', 'Backup and disaster recovery'],
+    },
+  ],
+};
 
 const proof = [
   { label: 'In IT since', value: '2009', note: site.credentials.find((c) => c.includes('enterprise')) },
   { label: 'Certifications', value: String(site.certifications.length), note: site.certifications.slice(0, 2).join(', ') },
-  { label: 'Frameworks', value: String(site.frameworks.length), note: site.frameworks.join(', ') },
+  { label: 'Projects shown', value: String(projects.length), note: 'Each with a diagram, plan or board' },
 ];
 ---
 
-<Base>
+<Base jsonLd={jsonLd}>
   <!-- 01 Hero -->
-  <Section number="01" label={`Network security engineer · ${site.location}`} first headingId="hero-title">
+  <Section number="01" label={`IT infrastructure engineer · ${site.location}`} first headingId="hero-title">
     <div class="grid gap-12 lg:grid-cols-12 lg:gap-16">
       <div class="lg:col-span-7">
         <h1 id="hero-title" class="text-4xl font-semibold leading-[1.08] sm:text-5xl lg:text-[3.75rem]">
@@ -49,8 +82,62 @@ const proof = [
     </div>
   </Section>
 
-  <!-- 02 Credentials + Recognition -->
-  <Section number="02" label="Credentials" tone="surface" headingId="cred-title">
+  <!-- 02 How I work -->
+  <Section number="02" label="How I work" tone="surface" headingId="approach-title">
+    <h2 id="approach-title" class="max-w-[26ch] text-3xl font-semibold leading-tight sm:text-4xl">Every project goes through the same four steps.</h2>
+    <ol class="approach mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+      {
+        site.approach.map((s, i) => (
+          <li class="approach-step">
+            <p class="font-mono text-sm text-brand">{String(i + 1).padStart(2, '0')}</p>
+            <h3 class="mt-2 font-display text-2xl font-semibold">{s.title}</h3>
+            <p class="mt-2 leading-relaxed text-muted">{s.text}</p>
+          </li>
+        ))
+      }
+    </ol>
+  </Section>
+
+  <!-- 03 Projects -->
+  <Section number="03" label="Projects" headingId="projects-title">
+    <div class="flex flex-wrap items-end justify-between gap-4">
+      <h2 id="projects-title" class="max-w-[24ch] text-3xl font-semibold leading-tight sm:text-4xl">Things I've planned, designed and built.</h2>
+      <a href="/projects/" class="link font-medium">All projects</a>
+    </div>
+    <ol class="mt-10 border-b border-line">
+      {projects.map((p, i) => <li><ProjectRow entry={p} number={i + 1} /></li>)}
+    </ol>
+  </Section>
+
+  <!-- 04 A note from me -->
+  <Section number="04" label="A note from me" tone="surface" headingId="note-title">
+    <h2 id="note-title" class="sr-only">A note from me</h2>
+    <div class="grid items-center gap-8 sm:grid-cols-[9rem_1fr] sm:gap-10">
+      <Image src={avatar} alt={`Portrait of ${site.name}`} widths={[144, 288]} sizes="144px" class="h-36 w-36 rounded-full border border-line object-cover" />
+      <div>
+        <p class="max-w-[58ch] text-xl leading-relaxed">{site.personalNote}</p>
+        <a href="/about/" class="link mt-4 inline-block font-medium">More about me</a>
+      </div>
+    </div>
+  </Section>
+
+  <!-- 05 What I work with -->
+  <Section number="05" label="What I work with" headingId="tools-title">
+    <h2 id="tools-title" class="max-w-[24ch] text-3xl font-semibold leading-tight sm:text-4xl">Tools and platforms I work with.</h2>
+    <div class="mt-10 grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
+      {
+        site.technologies.map((g) => (
+          <div>
+            <h3 class="label">{g.group}</h3>
+            <ul class="mt-4 space-y-2">{g.items.map((i) => <li>{i}</li>)}</ul>
+          </div>
+        ))
+      }
+    </div>
+  </Section>
+
+  <!-- 06 Credentials, standards and recognition -->
+  <Section number="06" label="Credentials" tone="surface" headingId="cred-title">
     <h2 id="cred-title" class="sr-only">Credentials</h2>
     <ul class="grid gap-6 sm:grid-cols-3">
       {site.credentials.map((c) => <li class="border-t border-line pt-4 font-display text-xl font-semibold">{c}</li>)}
@@ -63,7 +150,9 @@ const proof = [
         </ul>
       </div>
       <div class="md:col-span-5">
-        <h3 class="label">Education</h3>
+        <h3 class="label">Standards I know</h3>
+        <ul class="mt-4 space-y-2">{site.frameworks.map((f) => <li class="leading-snug">{f}</li>)}</ul>
+        <h3 class="label mt-8">Education</h3>
         <ul class="mt-4 space-y-2">{site.education.map((e) => <li class="leading-snug">{e}</li>)}</ul>
       </div>
     </div>
@@ -83,42 +172,8 @@ const proof = [
     </div>
   </Section>
 
-  <!-- 03 What I work with -->
-  <Section number="03" label="What I work with" headingId="tools-title">
-    <h2 id="tools-title" class="max-w-[24ch] text-3xl font-semibold leading-tight sm:text-4xl">Tools and platforms I work with.</h2>
-    <div class="mt-10 grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
-      {
-        site.technologies.map((g) => (
-          <div>
-            <h3 class="label">{g.group}</h3>
-            <ul class="mt-4 space-y-2">{g.items.map((i) => <li>{i}</li>)}</ul>
-          </div>
-        ))
-      }
-    </div>
-  </Section>
-
-  <!-- 04 Standards I know -->
-  <Section number="04" label="Standards I know" tone="surface" headingId="std-title">
-    <h2 id="std-title" class="sr-only">Standards I know</h2>
-    <ul class="grid gap-6 sm:grid-cols-3">
-      {site.frameworks.map((f) => <li class="border-t border-line pt-4 font-display text-2xl font-semibold">{f}</li>)}
-    </ul>
-  </Section>
-
-  <!-- 05 Case summaries -->
-  <Section number="05" label="Case summaries" headingId="cases-title">
-    <div class="flex flex-wrap items-end justify-between gap-4">
-      <h2 id="cases-title" class="max-w-[24ch] text-3xl font-semibold leading-tight sm:text-4xl">Results from recent projects.</h2>
-      <a href="/case-studies/" class="link font-medium">All case studies</a>
-    </div>
-    <ul class="mt-10 grid gap-6 md:grid-cols-3">
-      {featured.map((p) => <li><CaseCard entry={p} /></li>)}
-    </ul>
-  </Section>
-
-  <!-- 06 Call to action -->
-  <Section number="06" label="Let's talk" tone="surface" last headingId="cta-title">
+  <!-- 07 Call to action -->
+  <Section number="07" label="Let's talk" last headingId="cta-title">
     <h2 id="cta-title" class="max-w-[22ch] text-3xl font-semibold leading-tight sm:text-5xl">{site.closing.headline}</h2>
     <div class="mt-8 flex flex-wrap items-center gap-x-6 gap-y-4">
       <ExternalLink href={site.bookingUrl} class="btn-primary">{site.closing.primaryButton}</ExternalLink>

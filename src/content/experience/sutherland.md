@@ -4,7 +4,6 @@ role: Sr. Global Technology Infrastructure Specialist
 location: Kingston, Jamaica
 startDate: 2017-11-01
 endDate: 2024-03-31
-logo: ../../assets/logos/sutherland.svg
 skills:
   - SD-WAN
   - Cisco

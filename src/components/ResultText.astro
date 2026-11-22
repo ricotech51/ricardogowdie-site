@@ -1,0 +1,17 @@
+---
+// Shows a project result. A result still marked [ESTIMATE: confirm] gets a
+// visible label so nobody mistakes it for a confirmed number.
+import { isEstimate, withoutEstimateMark } from '../lib/content';
+
+interface Props {
+  text: string;
+  class?: string;
+}
+const { text, class: className } = Astro.props;
+const estimate = isEstimate(text);
+---
+
+<p class={className}>
+  {estimate && <span class="tag mb-2 mr-2 inline-block align-middle">Estimate, to confirm</span>}
+  {estimate ? withoutEstimateMark(text) : text}
+</p>

@@ -1,12 +1,16 @@
 ---
-title: About
-description: How I got into networking, what I focus on today, and the consulting work I take on.
+title: About my IT infrastructure and network work
+description: IT infrastructure and network engineer in Fayetteville, NC, with years in BPO customer operations. Active Directory, DNS, DHCP, Azure and network work.
 ---
 
-I got into networking because I noticed there weren't enough qualified people in the field, and because I have a natural knack for connecting devices and making them work together.
+I got into IT because I have a knack for connecting things and making them work together.
 
-I've been in IT since 2009. In 2017, I moved into enterprise IT at a global company with more than 60,000 employees, where I supported more than 2,000 devices at my site. Since then I've focused on network security: segmentation, firewalls, and infrastructure that is reliable and easier to support.
+I've been in IT since 2009. Most of that time has been in the customer operations side of business process outsourcing (BPO), at companies that support Fortune 500 clients. In that work, downtime is felt right away by the teams serving customers, so I learned early to build infrastructure that stays up.
 
-Today I lead end-user support operations, and before that I led IT modernization as an MIS Team Leader. I like the mix of hands-on engineering and helping a team do its best work.
+In 2017 I moved into enterprise IT at a global company with more than 60,000 employees, where I supported more than 2,000 devices at my site.
 
-I'm available for consulting and freelance projects.
+As MIS Team Leader at the Scientific Research Council, I led IT modernization. I planned, designed and built a failover cluster, backups on Synology, an Azure environment, Zero Trust access with Entra ID, and a segmented network. I also took a lab system from requirements through vendor selection and development.
+
+Today I lead end-user support operations. I like the mix of hands-on engineering and helping a team do its best work.
+
+I'm available for consulting projects in infrastructure and IT operations.
