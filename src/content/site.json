@@ -16,14 +16,13 @@
   "hero": {
     "headline": "I plan, design and build IT infrastructure that stays up.",
     "emphasis": "stays up",
-    "subline": "I've worked in IT since 2009 and in enterprise environments since 2017. I take on consulting projects and infrastructure work: failover clusters, backups, Azure, Active Directory and Entra ID, and the networks, DNS and DHCP that tie them together. Let's talk about yours.",
+    "subline": "I'm Ricardo. I build reliable networks, IT infrastructure, and AI workflows and I train your team to run them.",
     "primaryButton": "Book a Call",
     "secondaryLink": "Email me"
   },
   "credentials": [
-    "In IT since 2009",
-    "9+ years in enterprise networks",
-    "2,000+ devices supported"
+    "2,000+ devices supported in a global enterprise environment",
+    "Infrastructure for teams that support Fortune 500 clients"
   ],
   "certifications": [
     "ISC2 Certified in Cybersecurity (CC)",
@@ -157,7 +156,7 @@
       "Websites planned, built and deployed with Claude"
     ]
   },
-  "personalNote": "I got into IT because I have a knack for connecting things and making them work together. That started in Jamaica in 2009. Today I work from Fayetteville, NC.",
+  "personalNote": "I got into IT because I have a knack for connecting things and making them work together. Today I work from Fayetteville, NC.",
   "howIWork": {
     "steps": [
       {
