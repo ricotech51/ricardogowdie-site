@@ -26,6 +26,7 @@ const jsonLd = {
       address: { '@type': 'PostalAddress', addressLocality: 'Fayetteville', addressRegion: 'NC', addressCountry: 'US' },
       knowsAbout: [...new Set(knowsAbout)],
       hasCredential: site.certifications.map((c) => ({ '@type': 'EducationalOccupationalCredential', name: c })),
+      alumniOf: { '@type': 'CollegeOrUniversity', name: 'University of Technology, Jamaica' },
       sameAs: site.social.map((s) => s.href),
     },
     {
