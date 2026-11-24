@@ -21,7 +21,7 @@
     "secondaryLink": "Email me"
   },
   "credentials": [
-    "2,000+ devices supported in a global enterprise environment",
+    "End-user devices supported at enterprise scale in a global company",
     "Infrastructure for teams that support Fortune 500 clients"
   ],
   "certifications": [
@@ -112,7 +112,7 @@
     {
       "group": "AI",
       "items": [
-        "Claude",
+        "Large language models (LLMs)",
         "RAG (retrieval-augmented generation)",
         "Agents and skills",
         "MCP servers",
@@ -146,14 +146,14 @@
   ],
   "aiOffer": {
     "headline": "I help teams put AI to work.",
-    "text": "I hold the Claude Certified Associate Foundations certification, and I help organizations plan and implement AI. I teach executives and staff how to use it in their daily work, and I build the pieces that make it stick. I also set up and run websites with Claude, from the GitHub repository and domain to secure hosting on Cloudflare.",
+    "text": "I hold the Claude Certified Associate Foundations certification, and I help organizations plan and implement AI. I teach executives and staff how to use it in their daily work, and I build the pieces that make it stick. I also set up and run websites with AI, from the GitHub repository and domain to secure hosting on Cloudflare.",
     "items": [
       "Hands-on training for executives and staff",
       "AI workflows for everyday tasks",
       "Agents and skills for repeat work",
       "MCP servers that connect AI to your systems",
-      "Instruction files (CLAUDE.md and other Markdown files) that keep AI consistent",
-      "Websites planned, built and deployed with Claude"
+      "Instruction files (plain Markdown) that keep AI consistent",
+      "Websites planned, built and deployed with AI"
     ]
   },
   "personalNote": "I got into IT because I have a knack for connecting things and making them work together. Today I work from Fayetteville, NC.",
