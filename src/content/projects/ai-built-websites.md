@@ -10,9 +10,6 @@ tech:
   - Cloudflare Pages and DNS
   - Namecheap
   - Astro
-artifact: ../../assets/artifacts/10-ai-built-websites.png
-artifactKind: Setup and delivery plan
-artifactAlt: "Sample setup plan for a website built with AI: the stack from Visual Studio Code and an AI coding assistant to GitHub, Cloudflare Pages and DNS, and a Namecheap domain, then the plan, design, build and deploy steps with a sign-off at each one."
 problem: "Small organizations need a fast, secure website they own, without paying for a large build or being tied to a page builder."
 action: "I set up everything the site needs: a GitHub repository with a protected main branch, Visual Studio Code with an AI coding assistant, a Namecheap domain with DNS on Cloudflare, and Cloudflare Pages for hosting. Then I run the build in four phases. The AI writes the code, and I review and sign off on each phase."
 result: "A fast, secure website the client owns outright: the code in their GitHub, hosting in their Cloudflare account, and the domain in their name. Every change gets a preview link before it goes live."

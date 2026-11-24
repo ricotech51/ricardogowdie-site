@@ -7,9 +7,6 @@ tech:
   - Microsoft Entra ID
   - SSO
   - MFA
-artifact: ../../assets/artifacts/06-entra-sso-mfa.png
-artifactKind: Sign-in flow
-artifactAlt: "Sample Zero Trust flow: who, device, app and risk signals feed Entra ID Conditional Access, which allows, requires MFA, or blocks, with allowed users landing in apps behind single sign-on."
 problem: "[PLACEHOLDER] What was wrong before you started? One or two sentences."
 action: "I set up Zero Trust sign-in with Microsoft Entra ID. Every staff account now uses MFA, and apps sit behind single sign-on."
 featured: true

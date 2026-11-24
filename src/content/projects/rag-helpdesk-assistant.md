@@ -8,9 +8,6 @@ tech:
   - Retrieval-augmented generation
   - Visual Studio
   - Excel ticket export
-artifact: ../../assets/artifacts/00-rag-helpdesk.png
-artifactKind: Architecture diagram
-artifactAlt: "Sample RAG design: tickets exported to Excel are loaded and split into records, the most relevant tickets are found for each question, and a large language model answers in a browser chat window. A second panel lists the next steps for a production version."
 problem: "Helpdesk ticket data could answer useful questions, but getting an answer meant filtering and pivoting a spreadsheet by hand, one question at a time."
 action: "I exported the helpdesk tickets to Excel and wrote an app in Visual Studio that finds the tickets relevant to each question and passes them to a large language model. It opens in the browser as a chat window, where I can ask anything about the tickets or ask for a report draft."
 result: "I ask a question in plain English and get an answer straight away, instead of building a new spreadsheet view for each one."
