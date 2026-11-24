@@ -14,4 +14,4 @@ draft: false
 order: 4
 ---
 
-- Supported a large fleet of devices at my site, within a global company of more than 60,000 employees.
+- Supported end-user devices at enterprise scale for my site, within a global company of more than 60,000 employees.
