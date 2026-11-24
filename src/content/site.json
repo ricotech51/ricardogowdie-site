@@ -1,9 +1,9 @@
 {
   "name": "Ricardo J. Gowdie",
   "title": "Ricardo J. Gowdie | IT Infrastructure and Network Engineer, Fayetteville NC",
-  "description": "IT infrastructure and network engineer in Fayetteville, NC: Active Directory, DNS, DHCP, Hyper-V, Azure, Microsoft 365 and network design. On site or remote.",
+  "description": "IT infrastructure and network engineer in Fayetteville, NC: Active Directory, DNS, DHCP, Hyper-V, Azure, Microsoft 365 and network design. Remote and hybrid.",
   "location": "Fayetteville, NC",
-  "availability": "Available for remote or hybrid consulting and freelance projects on Eastern Time.",
+  "availability": "I take on remote and hybrid consulting work, on Eastern Time.",
   "email": "hello@ricardogowdie.com",
   "bookingUrl": "https://outlook.office.com/book/RicardoGowdie@ricardogowdie.com/",
   "resumePath": "/Ricardo_J_Gowdie_Resume.pdf",
@@ -16,13 +16,13 @@
   "hero": {
     "headline": "I plan, design and build IT infrastructure that stays up.",
     "emphasis": "stays up",
-    "subline": "I'm Ricardo. I build reliable networks, IT infrastructure, and AI workflows and I train your team to run them.",
+    "subline": "I'm Ricardo. I build networks, servers and AI tools that keep working, then I show your team how to run them.",
     "primaryButton": "Book a Call",
     "secondaryLink": "Email me"
   },
   "credentials": [
-    "2,000+ devices supported in a global enterprise environment",
-    "Infrastructure for teams that support Fortune 500 clients"
+    "Supported end-user devices at enterprise scale for a global company",
+    "Kept the infrastructure running for teams that serve Fortune 500 clients"
   ],
   "certifications": [
     "ISC2 Certified in Cybersecurity (CC)",
@@ -112,7 +112,7 @@
     {
       "group": "AI",
       "items": [
-        "Claude",
+        "Large language models (LLMs)",
         "RAG (retrieval-augmented generation)",
         "Agents and skills",
         "MCP servers",
@@ -129,51 +129,44 @@
   "approach": [
     {
       "title": "Plan",
-      "text": "I start with what the business needs and what is already there, then agree on what done looks like."
+      "text": "I find out what you need and agree what done looks like."
     },
     {
       "title": "Design",
-      "text": "I draw it out, weigh the options, and write down why I chose one."
+      "text": "I draw it out and write down why I chose it."
     },
     {
       "title": "Build",
-      "text": "I build it in stages, test failover and restores, and keep a rollback ready."
+      "text": "I build in stages and keep a rollback ready."
     },
     {
       "title": "Run",
-      "text": "I leave runbooks and monitoring so the next person doesn't start from zero."
+      "text": "I hand over runbooks and monitoring."
     }
   ],
   "aiOffer": {
     "headline": "I help teams put AI to work.",
-    "text": "I hold the Claude Certified Associate Foundations certification, and I help organizations plan and implement AI. I teach executives and staff how to use it in their daily work, and I build the pieces that make it stick. I also set up and run websites with Claude, from the GitHub repository and domain to secure hosting on Cloudflare.",
+    "text": "I hold the Claude Certified Associate Foundations certification. I help organizations work out where AI fits, set it up, and train staff to use it every day. I also build and host websites with AI.",
     "items": [
       "Hands-on training for executives and staff",
-      "AI workflows for everyday tasks",
-      "Agents and skills for repeat work",
+      "AI workflows and agents for repeat work",
       "MCP servers that connect AI to your systems",
-      "Instruction files (CLAUDE.md and other Markdown files) that keep AI consistent",
-      "Websites planned, built and deployed with Claude"
+      "Websites built and deployed with AI"
     ]
   },
-  "personalNote": "I got into IT because I have a knack for connecting things and making them work together. Today I work from Fayetteville, NC.",
   "howIWork": {
     "steps": [
       {
         "title": "Train and mentor",
-        "text": "I train and mentor support staff on troubleshooting, escalation, and documentation."
+        "text": "I teach support staff how to troubleshoot, when to escalate, and how to write things down."
       },
       {
-        "title": "Own the incident",
-        "text": "I own high-priority incidents from start to finish and keep stakeholders informed until they're resolved."
+        "title": "Stay on the incident",
+        "text": "When something big breaks, I stay on it until it's fixed and keep everyone posted along the way."
       },
       {
         "title": "Work with vendors",
-        "text": "I work with vendors and managed service providers to fix problems."
-      },
-      {
-        "title": "Write it down",
-        "text": "I write runbooks so the next person doesn't start from zero."
+        "text": "When the fix sits with a vendor or managed service provider, I deal with them directly and see it through."
       }
     ]
   },

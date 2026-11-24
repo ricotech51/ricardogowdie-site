@@ -16,7 +16,7 @@ export async function getProjects() {
   // Cloudflare Pages) refuses to build while any result is still an estimate.
   if (process.env.CF_PAGES_BRANCH === 'main') {
     const pending = projects
-      .filter((p) => isEstimate(p.data.result) || [p.data.summary, p.data.action, p.data.result, p.data.where].some(hasPlaceholder))
+      .filter((p) => isEstimate(p.data.result ?? '') || [p.data.summary, p.data.action, p.data.result, p.data.where].some(hasPlaceholder))
       .map((p) => p.id);
     if (pending.length) {
       throw new Error(`Replace [ESTIMATE: confirm] or [PLACEHOLDER] text in the card fields of: ${pending.join(', ')}`);

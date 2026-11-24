@@ -5,8 +5,9 @@
 
 title: Short name of the project
 tag: One word for the card, e.g. Segmentation
-# 1-2 sentences for the card. End with the result. Keep "approximately" on every number.
-summary: What I did, in one sentence. The result, approximately N%.
+# One short sentence for the project list and search results. No impact numbers:
+# the site is not a resume.
+summary: What I did, in one sentence.
 # Optional. Format: YYYY-MM-DD
 date: 2026-01-31
 # Optional image. Put it in src/assets/projects/ and describe it in coverAlt.
@@ -25,13 +26,12 @@ where: Company or "Consulting work"
 # The caption defaults to "Representative example, details changed."
 problem: What was wrong before I started.
 action: What I did.
-result: What changed, approximately N%.
-# While a number is a guess, start the result with [ESTIMATE: confirm].
-# The live site will not publish until you replace it with the real number.
+# Optional. A plain outcome without numbers, or delete the line.
+# result: What changed for the people who use it.
 # Optional links. Delete the line if there isn't one.
 # liveUrl: https://example.com
 # repoUrl: https://github.com/ricotech51/example
-# featured: true shows it in the numbered list on the Home page.
+# featured: true shows it on the Home page. Keep it to about 5 projects.
 featured: false
 # draft: true keeps it off the live site while you work on it.
 draft: true

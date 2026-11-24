@@ -2,7 +2,7 @@
 title: Network redesign and wireless optimization
 tag: Performance
 where: Scientific Research Council
-summary: "I led a network redesign and wireless optimization, including access point placement and channel planning. Overall network performance improved by approximately 50%."
+summary: "I redesigned the network and reworked the Wi-Fi coverage and channels."
 tech:
   - Wireless
   - Channel planning
@@ -11,9 +11,8 @@ artifact: ../../assets/artifacts/09-wireless-plan.png
 artifactKind: Coverage plan
 artifactAlt: "Sample floor plan before and after: four corridor access points on the same channels, then six in-room access points on planned channels."
 problem: "[PLACEHOLDER] What was wrong before you started? One or two sentences."
-action: "I led a network redesign and wireless optimization, including access point placement and channel planning."
-result: "Overall network performance improved by approximately 50%."
-featured: true
+action: "I redesigned the network and reworked the Wi-Fi, choosing where each access point goes and which channel it uses."
+featured: false
 draft: false
 order: 9
 ---
