@@ -11,8 +11,8 @@ const projects = await getProjects();
 
 <Base title="IT infrastructure and networking projects" description="IT infrastructure and networking projects: failover clustering, backups, Azure, Active Directory and Entra ID, VLAN segmentation and wireless, each with a diagram.">
   <Section number="01" label="Projects" first headingId="pj-title">
-    <h1 id="pj-title" class="max-w-[20ch] text-4xl font-semibold leading-[1.1] sm:text-5xl">What I planned, built, and <span class="emph">what changed</span>.</h1>
-    <p class="mt-6 max-w-[60ch] text-lg text-muted">Each project has a diagram, plan or board that shows how the work was done. They are samples with made-up names and addresses, so no client or employer details are shared.</p>
+    <h1 id="pj-title" class="max-w-[20ch] text-4xl font-semibold leading-[1.1] sm:text-5xl">IT infrastructure and network projects <span class="emph">I've built</span>.</h1>
+    <p class="mt-6 max-w-[60ch] text-lg text-muted">Each project has a sample diagram or plan, redrawn with made-up names so no client details are shared.</p>
     <ol class="mt-12 border-b border-line">
       {projects.map((p, i) => <li><ProjectRow entry={p} number={i + 1} headingLevel="h2" /></li>)}
     </ol>

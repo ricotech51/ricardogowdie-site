@@ -1,7 +1,7 @@
 ---
-// One line of the numbered project index (Home and Projects pages).
+// One line of the numbered project index (Home and Projects pages):
+// title, where, and the one-sentence summary. The full story is on the project's page.
 import type { CollectionEntry } from 'astro:content';
-import ResultText from './ResultText.astro';
 import { hasDetailPage } from '../lib/content';
 
 interface Props {
@@ -17,17 +17,13 @@ const Heading = headingLevel;
 
 <article class="group grid gap-x-8 gap-y-3 border-t border-line py-7 md:grid-cols-12">
   <p class="font-mono text-sm text-brand md:col-span-1 md:pt-1" aria-hidden="true">{String(number).padStart(2, '0')}</p>
-  <div class="md:col-span-6">
+  <div class="md:col-span-11">
     <Heading class="text-xl font-semibold leading-snug sm:text-2xl">
       {href ? <a href={href} class="hover:text-brand hover:underline hover:decoration-plum underline-offset-4">{data.title}</a> : data.title}
     </Heading>
     <p class="mt-2 font-mono text-xs uppercase tracking-wide text-muted">
       {data.where}{data.where && data.artifactKind && ' · '}{data.artifactKind && <span>{data.artifactKind}</span>}
     </p>
-    <p class="mt-3 max-w-[60ch] leading-relaxed text-muted">{data.action}</p>
-  </div>
-  <div class="md:col-span-5">
-    <ResultText text={data.result} class="font-display text-lg font-semibold leading-snug text-brand" />
-    {href && <a href={href} class="link mt-3 inline-block text-sm font-medium">See how I did it<span class="sr-only">: {data.title}</span></a>}
+    <p class="mt-3 max-w-[60ch] leading-relaxed text-muted">{data.summary}</p>
   </div>
 </article>

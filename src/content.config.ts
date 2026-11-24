@@ -16,7 +16,7 @@ const projects = defineCollection({
         title: z.string().min(1),
         // Short label shown as the plum tag on the card, e.g. "Segmentation".
         tag: z.string().min(1),
-        // 1-2 sentences for the card. End with the result.
+        // One short sentence for the project list. No impact numbers.
         summary: z.string().min(1),
         date: z.coerce.date().optional(),
         cover: image().optional(),
@@ -33,7 +33,8 @@ const projects = defineCollection({
         artifactCaption: z.string().default('Representative example, details changed.'),
         problem: z.string().min(1),
         action: z.string().min(1),
-        result: z.string().min(1),
+        // Optional plain outcome. Leave it out rather than add a percentage.
+        result: z.string().min(1).optional(),
         liveUrl: z.url().optional(),
         repoUrl: z.url().optional(),
         featured: z.boolean().default(false),
@@ -148,8 +149,6 @@ const site = defineCollection({
       aiOffer: z
         .object({ headline: z.string().min(1), text: z.string().min(1), items: z.array(z.string().min(1)).min(1) })
         .strict(),
-      // Home page: a few sentences in my own words, next to my photo.
-      personalNote: z.string().min(1),
       howIWork: z
         .object({
           intro: z.string().min(1).optional(),

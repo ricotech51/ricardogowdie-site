@@ -56,7 +56,39 @@ const hasResume = await resumeExists(site.resumePath);
     </ol>
   </Section>
 
-  <Section number="03" label="Where I've worked" last headingId="work-title">
+  <Section number="03" label="Credentials" headingId="credentials-title">
+    <h2 id="credentials-title" class="max-w-[24ch] text-3xl font-semibold leading-tight sm:text-4xl">Certifications, standards and recognition</h2>
+    <div class="mt-10 grid gap-10 md:grid-cols-12">
+      <div class="md:col-span-7">
+        <h3 class="label">Certifications</h3>
+        <ul class="mt-4 grid gap-x-8 gap-y-2 sm:grid-cols-2">
+          {site.certifications.map((c) => <li class="flex gap-3 leading-snug"><span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-brand" aria-hidden="true" />{c}</li>)}
+        </ul>
+      </div>
+      <div class="md:col-span-5">
+        <h3 class="label">Standards I know</h3>
+        <ul class="mt-4 space-y-2">{site.frameworks.map((f) => <li class="leading-snug">{f}</li>)}</ul>
+        <h3 class="label mt-8">Education</h3>
+        <ul class="mt-4 space-y-2">{site.education.map((e) => <li class="leading-snug">{e}</li>)}</ul>
+      </div>
+    </div>
+    <div class="mt-14">
+      <h3 class="label">Recognition</h3>
+      <ul class="mt-4 grid gap-6 sm:grid-cols-3">
+        {
+          site.recognition.map((r) => (
+            <li class="border-t border-plum/60 pt-4">
+              <p class="font-mono text-sm text-muted">{r.year}</p>
+              <p class="mt-1 font-display text-lg font-semibold">{r.award}</p>
+              <p class="text-muted">{r.organization}</p>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </Section>
+
+  <Section number="04" label="Where I've worked" tone="surface" last headingId="work-title">
     <h2 id="work-title" class="sr-only">Where I've worked</h2>
     <ul class="grid gap-4 sm:grid-cols-2">
       {

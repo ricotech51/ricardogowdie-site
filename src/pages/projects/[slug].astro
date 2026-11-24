@@ -22,19 +22,22 @@ const { data } = entry;
 const site = await getSite();
 const { Content } = await render(entry);
 const showProblem = !hasPlaceholder(data.problem);
+// Search description: the fuller "What I did" line, unless it is too long for a search result.
+const description = data.action.length <= 170 ? data.action : data.summary;
+const boxes = 1 + (showProblem ? 1 : 0) + (data.result ? 1 : 0);
 const showBody = !hasPlaceholder(entry.body) && (entry.body ?? '').trim().length > 0;
 ---
 
-<Base title={data.title} description={data.summary} type="article">
+<Base title={data.title} description={description} type="article">
   <Section number={String(number).padStart(2, '0')} label={data.tag} first headingId="pj-title">
     <a href="/projects/" class="link text-sm">All projects</a>
     <h1 id="pj-title" class="mt-4 max-w-[24ch] text-4xl font-semibold leading-[1.1] sm:text-5xl">{data.title}</h1>
     {data.where && <p class="mt-4 font-mono text-sm uppercase tracking-wide text-muted">{data.where}</p>}
 
-    <dl class:list={['mt-10 grid gap-6', showProblem ? 'md:grid-cols-3' : 'md:grid-cols-2']}>
+    <dl class:list={['mt-10 grid gap-6', boxes === 3 && 'md:grid-cols-3', boxes === 2 && 'md:grid-cols-2']}>
       {showProblem && <div class="rounded-xl border border-line bg-surface p-5"><dt class="label">The situation</dt><dd class="mt-2">{data.problem}</dd></div>}
       <div class="rounded-xl border border-line bg-surface p-5"><dt class="label">What I did</dt><dd class="mt-2">{data.action}</dd></div>
-      <div class="rounded-xl border border-line bg-surface p-5"><dt class="label">Result</dt><dd class="mt-2"><ResultText text={data.result} class="font-semibold text-brand" /></dd></div>
+      {data.result && <div class="rounded-xl border border-line bg-surface p-5"><dt class="label">Result</dt><dd class="mt-2"><ResultText text={data.result} class="font-semibold text-brand" /></dd></div>}
     </dl>
 
     {

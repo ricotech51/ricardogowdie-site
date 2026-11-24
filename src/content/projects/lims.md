@@ -2,7 +2,7 @@
 title: Laboratory Information Management System
 tag: Project delivery
 where: Scientific Research Council
-summary: "I gathered the requirements for a Laboratory Information Management System, ran the vendor bidding, and oversaw development and code reviews."
+summary: "I scoped a new lab system, ran the vendor bids, and oversaw the build."
 tech:
   - Miro
   - Requirements
@@ -11,9 +11,8 @@ artifact: ../../assets/artifacts/05-lims-user-story-map.png
 artifactKind: User story map
 artifactAlt: "Sample user story map for a lab system: six workflow steps from receiving a sample to reporting, with user stories split into two releases."
 problem: "[PLACEHOLDER] What was wrong before you started? One or two sentences."
-action: "I gathered the requirements for a Laboratory Information Management System, mapped the user stories in Miro, ran the vendor bidding process, and oversaw development and code reviews."
-result: "Approximately 40% less time spent on manual sample tracking and reporting."
-featured: true
+action: "I worked out what the lab needed from a new Laboratory Information Management System, mapped it as user stories in Miro, ran the vendor bids, and oversaw the build, including code reviews."
+featured: false
 draft: false
 order: 5
 ---
