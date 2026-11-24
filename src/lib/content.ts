@@ -52,16 +52,6 @@ export async function isBlogVisible() {
   return articles.length >= site.blogMinArticles;
 }
 
-// A project gets its own page once its details are written
-// (no [PLACEHOLDER] left in the problem or the body).
-// A project also gets a page once it has an artifact to show; any part still
-// marked [PLACEHOLDER] is left off that page.
-export function hasDetailPage(entry: { body?: string; data: { problem: string; artifact?: unknown } }) {
-  if (entry.data.artifact) return true;
-  const text = `${entry.data.problem}\n${entry.body ?? ''}`;
-  return !text.includes('[PLACEHOLDER]') && (entry.body ?? '').trim().length > 0;
-}
-
 // The "Download CV" link only shows when the PDF is actually in public/.
 export async function resumeExists(resumePath: string) {
   const { existsSync } = await import('node:fs');

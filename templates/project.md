@@ -18,12 +18,6 @@ tech:
   - VLANs and segmentation
 # Where the work happened, e.g. Scientific Research Council or Consulting work.
 where: Company or "Consulting work"
-# Optional picture of the work (diagram, plan, board). Use a SAMPLE with made-up
-# names and addresses, never a real client screenshot. Put it in src/assets/artifacts/.
-# artifact: ../../assets/artifacts/my-diagram.png
-# artifactKind: Diagram
-# artifactAlt: What the picture shows, in one sentence
-# The caption defaults to "Representative example, details changed."
 problem: What was wrong before I started.
 action: What I did.
 # Optional. A plain outcome without numbers, or delete the line.
